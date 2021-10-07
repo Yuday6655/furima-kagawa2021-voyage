@@ -1,6 +1,12 @@
 # README
 
-# テーブル設計
+# 概要
+売り手と買い手を仲介する、フリーマーケットアプリケーション
+
+# 開発環境
+ Ruby/Ruby on Rails/MySQL/Github/AWS/Visual Studio Code
+
+# データベース設計
 ​
 ## usersテーブル
 ​
@@ -25,18 +31,22 @@
 ​
 ## itemsテーブル
 ​
-| Column             | Type       | Options                         |
-| ------------------ | ---------- | ------------------------------- |
-| price              | integer    | null: false                     |
-<!-- | shipping_fee       | integer    | null: false                     | -->
-<!-- | shipment_area      | text       | null: false                     | -->
-<!-- | shipment_date      | text       | null: false                     | -->
-| user               | references | null: false, foreign_key: true  |
+| Column            | Type           | Options                         |
+| ----------------- | -------------- | ------------------------------- |
+| user_id           | references     | null: false, foreign_key: true  |
+| title             | integer        | null: false                     |
+| detail            | string         | null: false                     |
+| category          | integer        | null: false                     |
+| quality_id        | references     | null: false                     |
+| prefecture_id     | references     | null: false                     |
+| shipment_time_id  | references     | null: false                     |
+| price             | integer        | null: false                     |
+| image             | ActiveStorage | null: false, foreign_key: true   | 
 ​
 ### Association
 ​
 - belongs_to :user
-- has_many :comments
+- has_many :comments, dependent: :destroy
 - has_one :order
 ​
 ## commentsテーブル
@@ -51,6 +61,7 @@
 ​
 - belongs_to :user
 - belongs_to :item
+- 
 ​
 ## ordersテーブル
 ​
