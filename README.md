@@ -16,11 +16,9 @@
 | email              | string   | null: false |
 | password           | string   | null: false |
 | nickname           | string   | null: false |
-| lastname_kanji     | string   | null: false |
-| firstname_kanji    | string   | null: false |
-| lastname_kana      | string   | null: false |
-| firstname_kana     | string   | null: false |
-| birth_date         | date     | null: false | 
+| name_kanji         | string   | null: false |
+| name_kana          | string   | null: false |
+| birth_day          | date     | null: false | 
 
 ### Association
 - has_many :items
@@ -34,8 +32,9 @@
 | user_id           | references     | null: false, foreign_key: true  |
 | title             | string         | null: false                     |
 | detail            | text           | null: false                     |
-| category          | references     | null: false                     |
+| category_id       | references     | null: false                     |
 | quality_id        | references     | null: false                     |
+| shipping_fee_id   | references     | null: false                     |
 | prefecture_id     | references     | null: false                     |
 | shipment_days_id  | references     | null: false                     |
 | price             | integer        | null: false                     |
@@ -55,9 +54,9 @@
 | postal_code        | string     | null: false |
 | prefecture         | string     | null: false |
 | city_town          | string     | null: false |
-| add_number         | string     | null: false |
+| address_number     | string     | null: false |
 | building           | string     |             |
-| telephone_number   | string     | null: false |
+| phone_number       | string     | null: false |
 
 ### Association
 - belongs_to :user
