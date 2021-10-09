@@ -73,6 +73,7 @@ Ruby/Ruby on Rails/MySQL/Github/AWS/Visual Studio Code
 -----
 | Column            | Type           | Options                         |
 | ----------------- | -------------- | ------------------------------- |
+| order             | references | foreign_key: true |
 | postal_code        | string     | null: false |
 | prefecture         | integer    | null: false                   |
 | city_town          | string     | null: false |
