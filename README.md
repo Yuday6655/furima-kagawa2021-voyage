@@ -35,11 +35,11 @@ Ruby/Ruby on Rails/MySQL/Github/AWS/Visual Studio Code
 | user              | references     | foreign_key: true  |
 | title             | string         | null: false                     |
 | detail            | text           | null: false                     |
-| category       | integer        | null: false                  |
-| quality       | integer        | null: false                  |
-| shipping_fee  | integer        | null: false                   |
-| prefecture         | integer    | null: false                   |
-| shipment_date  | integer        | null: false                  |
+| category_id       | integer        | null: false                  |
+| quality_id       | integer        | null: false                  |
+| shipping_fee_id  | integer        | null: false                   |
+| prefecture_id       | integer    | null: false                   |
+| shipment_date_id  | integer        | null: false                  |
 | price             | integer        | null: false                     |
 
 
@@ -75,7 +75,7 @@ Ruby/Ruby on Rails/MySQL/Github/AWS/Visual Studio Code
 | ----------------- | -------------- | ------------------------------- |
 | order             | references | foreign_key: true |
 | postal_code        | string     | null: false |
-| prefecture         | integer    | null: false                   |
+| prefecture_id         | integer    | null: false                   |
 | city_town          | string     | null: false |
 | address_number     | string     | null: false |
 | building           | string     |             |
