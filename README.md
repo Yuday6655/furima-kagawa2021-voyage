@@ -32,7 +32,7 @@ Ruby/Ruby on Rails/MySQL/Github/AWS/Visual Studio Code
 -----
 | Column            | Type           | Options                         |
 | ----------------- | -------------- | ------------------------------- |
-| user              | references     | foreign_key: true  |
+| user              | references     | null: false, foreign_key: true  |
 | title             | string         | null: false                     |
 | detail            | text           | null: false                     |
 | category_id       | integer        | null: false                  |
@@ -61,8 +61,8 @@ Ruby/Ruby on Rails/MySQL/Github/AWS/Visual Studio Code
 -----
 | Column             | Type       | Options     |
 | ------------------ | ---------  | ----------- |
-| user               | references | foreign_key: true |
-| item               | references | foreign_key: true |
+| user               | references | null: false, foreign_key: true |
+| item               | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -73,7 +73,7 @@ Ruby/Ruby on Rails/MySQL/Github/AWS/Visual Studio Code
 -----
 | Column            | Type           | Options                         |
 | ----------------- | -------------- | ------------------------------- |
-| order             | references | foreign_key: true |
+| order             | references | null: false, foreign_key: true |
 | postal_code        | string     | null: false |
 | prefecture_id         | integer    | null: false                   |
 | city_town          | string     | null: false |
@@ -91,9 +91,9 @@ Ruby/Ruby on Rails/MySQL/Github/AWS/Visual Studio Code
 -----
 | Column             | Type       | Options     |
 | ------------------ | ---------  | ----------- |
-| user               | references | foreign_key: true |
-| item               | references | foreign_key: true |
-| comment            | text       | ull: false |
+| user               | references | null: false, foreign_key: true |
+| item               | references | null: false, foreign_key: true |
+| comment            | text       | null: false |
 
 ### Association
 - belongs_to :user
