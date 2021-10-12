@@ -1,10 +1,11 @@
 class Item < ApplicationRecord
+  has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
   belongs_to_active_hash :quality
   belongs_to_active_hash :shipping_fee
   belongs_to_active_hash :prefecture
-  # belongs_to_active_hash :shipment_date
+  belongs_to_active_hash :shipment_date
 
  validates :title, :detail, :price, presence: true
  validates :price, inclusion: { in: 300..9_999_999 }, format: { with: /\A[0-9]+\z/ }
