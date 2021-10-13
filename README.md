@@ -24,7 +24,7 @@ Ruby/Ruby on Rails/MySQL/Github/AWS/Visual Studio Code
 ### Association
 - has_many :items
 - has_many :orders
-- hsd_many :comments
+- has_many :comments
 
 
 
@@ -52,12 +52,12 @@ Ruby/Ruby on Rails/MySQL/Github/AWS/Visual Studio Code
 - belongs_to_active_hash :shipping_fee
 - belongs_to_active_hash :prefecture
 - belongs_to_active_hash :shipment_date
-- hsd_many :comments
+- has_many :comments
 
 
 
 
-## ordersテーブル （後日実装予定）
+## ordersテーブル 
 -----
 | Column             | Type       | Options     |
 | ------------------ | ---------  | ----------- |
