@@ -156,7 +156,6 @@
         <% end %>
       </li>
       <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
-
       <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
       <%# 商品がある場合は表示されないようにしましょう %>
       <li class='list'>
@@ -182,8 +181,9 @@
   </div>
   <%# /商品一覧 %>
 </div>
-<%= link_to('#', class: 'purchase-btn') do %>
-  <span class='purchase-btn-text'>出品する</span>
-  <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
-<% end %>
+    <%= link_to(new_item_path, class: 'purchase-btn') do %>
+      <span class='purchase-btn-text'>出品する</span>
+      <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
+    <% end %>
+
 <%= render "shared/footer" %>
