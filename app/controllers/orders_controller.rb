@@ -1,7 +1,9 @@
 class OrdersController < ApplicationController
   def index
+    @order = Order.new
   end
 
-  def create
+  def create  
   end
+
 end
