@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
-  def create  
+  def create      
   end
 
 end
