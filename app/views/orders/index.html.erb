@@ -6,8 +6,10 @@
       購入内容の確認
     </h1>
     <%# 購入内容の表示 %>
+      <%# <%= image_tag "購入商品の画像表示" %> 
     <div class='buy-item-info'>
-      <%= image_tag"", class: 'buy-item-img' %>
+     <%= image_tag @item.image, class: 'buy-item-img' %>
+
       <div class='buy-item-right-content'>
         <h2 class='buy-item-text'>
           <%= @item.title %>
@@ -31,6 +33,10 @@
     </div>
     <%# /支払額の表示 %>
 
+     <% 
+=begin
+%>
+
     <%= form_with id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
    
    <%# カード情報の入力 %>
@@ -48,3 +54,6 @@
   </div>
 </div>
 <%= render "shared/second-footer"%>
+<%
+=end
+%>
