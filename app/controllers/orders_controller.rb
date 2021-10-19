@@ -4,7 +4,7 @@ before_action :set_item, :authenticate_user!
 
 def index
   @order = Order.new
-end
+ end
 
  def create
   @order = Order.new(order_params)
@@ -22,13 +22,14 @@ private
     #購入品の情報の取得
     @item = Item.find(params[:item_id])
 
+
     # if @item.oder_id
     #   redirect_to item_path(@item.id), alert: '売り切れのため、購入できません'
     # end
   end
 
-  def order_params     #price ではなく、カード情報などが入る？
-    params.require(:order).permit(:price) .merge(user_id: current_user.id, item_id: params[:item_id])
+  def order_params   
+    params.require(:order).permit(:postal_code, :prefecture_id, :city_town, :address_number, :building, :phone_number ) .merge(user_id: current_user.id, item_id: params[:item_id])
   end
 
 end
