@@ -17,7 +17,6 @@ end
 end
 
 
-
 private
  def set_item
     #購入品の情報の取得
