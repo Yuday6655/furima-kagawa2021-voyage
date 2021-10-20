@@ -22,12 +22,12 @@ private
   end
 
   def order_params
-    params.require(:order).permit(:item_id)
+    params.require(:order).permit(:item_id).merge(item_id: @item.id)
     params.require(:order).permit(:user_id).merge(user_id: current_user.id,)
   end
   
   def address_params   
-      params.permit(:postal_code, :prefecture_id, :city_town, :address_number, :building, :phone_number ) .merge(user_id: current_user.id, item_id: params[:item_id])
+      params.permit(:postal_code, :prefecture_id, :city_town, :address_number, :building, :phone_number ) 
   end
 
 end
