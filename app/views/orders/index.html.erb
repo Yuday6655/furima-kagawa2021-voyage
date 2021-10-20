@@ -78,6 +78,7 @@
         <%= f.text_field :hoge, class:"input-default", id:"card-cvc", placeholder:"カード背面4桁もしくは3桁の番号", maxlength:"4" %>
       </div>
     </div>
+    <% end %>
     <%# /カード情報の入力 %>
   <%
 =end
@@ -87,6 +88,9 @@
 
    <%# 配送先の入力 %>
    <%= form_with model: @order_address, url: item_orders_path, method: :post, local: true do |f| %>
+    <%# エラーメッセージの呼び出し %>
+   <%= render 'error_messages', model: @order_address %>
+   
     <div class='shipping-address-form'>
       <h1 class='info-input-haedline'>
         配送先入力
@@ -134,7 +138,6 @@
         <%= f.text_field :phone_number, class:"input-default", id:"phone-number", placeholder:"例）09012345678",maxlength:"11"%>
       </div>
     </div>
-    <% end %>
     <%# /配送先の入力 %>
 
     <div class='buy-btn'>
