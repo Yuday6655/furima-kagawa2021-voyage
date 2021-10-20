@@ -1,12 +1,10 @@
 <%= render "shared/second-header"%>
-
 <div class='transaction-contents'>
   <div class='transaction-main'>
     <h1 class='transaction-title-text'>
       購入内容の確認
     </h1>
     <%# 購入内容の表示 %>
-      <%# <%= image_tag "購入商品の画像表示" %> 
     <div class='buy-item-info'>
      <%= image_tag @item.image, class: 'buy-item-img' %>
 
@@ -33,14 +31,10 @@
     </div>
     <%# /支払額の表示 %>
 
- <% 
-=begin
-%>  
-    <%= form_with id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
 
-
-
-   <%# カード情報の入力 %>
+<%# カード情報の入力 %>
+ <%= form_with id: 'charge-form', class: 'transaction-form-wrap', model: @order_address, url: item_orders_path, method: :post, local: true do |f| %>
+    <%= render 'shared/error_messages', model: f.object %> 
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
         クレジットカード情報入力
@@ -78,19 +72,10 @@
         <%= f.text_field :hoge, class:"input-default", id:"card-cvc", placeholder:"カード背面4桁もしくは3桁の番号", maxlength:"4" %>
       </div>
     </div>
-    <% end %>
+
     <%# /カード情報の入力 %>
-  <%
-=end
-%>
-
-
-
-   <%# 配送先の入力 %>
-   <%= form_with model: @order_address, url: item_orders_path, method: :post, local: true do |f| %>
-    <%# エラーメッセージの呼び出し %>
-   <%= render 'error_messages', model: @order_address %>
-   
+ 
+   <%# 配送先の入力 %>  
     <div class='shipping-address-form'>
       <h1 class='info-input-haedline'>
         配送先入力
