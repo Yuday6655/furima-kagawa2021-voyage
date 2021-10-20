@@ -9,7 +9,7 @@ def index
 def create
    @order_address = OrderAddress.new(order_params)
     if @order_address.valid?
-        @order_address.save
+      @order_address.save
         redirect_to root_path
       else
         redirect_to item_orders_path
@@ -28,8 +28,8 @@ end
   end
 
 
-def address_params
-    params.require(:order_address).permit(:postal_code, :prefecture_id, :city_town, :address_number, :building, :phone_number ).merge(order_id: @oder.id)
+  def address_params
+    params.require(:order_address).permit(:postal_code, :prefecture_id, :city_town, :address_number, :building, :phone_number ).merge(order_id: @order.id)
   end
 
 end
