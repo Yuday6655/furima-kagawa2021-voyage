@@ -29,13 +29,17 @@
         <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
         <p class="or-text">or</p>
         <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>        
-      <% else %>
+     <% elsif  @item.order.present? %>     
+         <span class="item-red-btn">
+          <%= "売り切れました"%>
+          </span>
+     <% else %>
          <%= link_to "購入画面に進む", item_orders_path(@item.id) ,class:"item-red-btn" %>
       <% end %>
     <% end %>
 
     <div class="item-explain-box">
-      <span><%= @item.detail %></span>
+    <span><%= @item.detail %></span>
     </div>
     <table class="detail-table">
       <tbody>
