@@ -1,10 +1,14 @@
 class OrdersController < ApplicationController
 
-before_action :set_item, :authenticate_user!
+before_action :set_item, :move_to_root_path, :authenticate_user!
 
 def index
-  @order_address = OrderAddress.new
- end
+  if current_user.id == @item.user_id
+    redirect_to root_path
+  else
+    @order_address = OrderAddress.new
+  end
+end
 
 def create
    @order_address = OrderAddress.new(order_params)
@@ -20,7 +24,6 @@ end
  private
 
   def set_item
-    #購入品の情報の取得
     @item = Item.find(params[:item_id])
   end
 
@@ -35,6 +38,12 @@ end
         card: order_params[:token],    
         currency: 'jpy'                 
       )
+  end
+
+  def move_to_root_path
+    unless user_signed_in?
+      redirect_to root_path
+    end
   end
 
   def address_params
