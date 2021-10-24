@@ -1,46 +1,60 @@
 require 'rails_helper'
 
 RSpec.describe OrderAddress, type: :model do
-  
-  describe '送付先アドレスの保存' do
-    before do
+   before do
       user = FactoryBot.create(:user)
-      @order_address = FactoryBot.build(:order_address, user_id: user.id)
+      item = FactoryBot.create(:item)
+      @order_address = FactoryBot.build(:order_address, user_id: user, item_id: item)
+      sleep 0.1
     end
 
-    context '内容に問題ない場合' do
-      it 'すべての値が正しく入力されていれば保存できること' do
+  describe '購入機能' do
+    context "購入できる場合" do
+      it "tokenとアドレス情報が適切に入力されていれば登録できる" do
+        expect(@order_address).to be_valid
       end
-      it 'buildingは空でも保存できること' do
+      it 'buildingは空でも保存できる' do
+        @order_address.building = ''
+        expect(@order_address).to be_valid
       end
-    end
+    end 
 
-    context '内容に問題がある場合' do
-      it 'postal_codeが空だと保存できないこと' do
-      end
-      it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
-      end
-      it 'prefectureを選択していないと保存できないこと' do
-      end
-    end
-
-  context '内容に問題ない場合' do
-    it "priceとtokenがあれば保存ができること" do
-      expect(@order).to be_valid
-    end
-  end
-
-  context '内容に問題がある場合' do
-    it "priceが空では保存ができないこと" do
-      @order.price = nil
-      @order.valid?
-      expect(@order.errors.full_messages).to include("Price can't be blank")
-    end
-
-    it "tokenが空では登録できないこと" do
-      @order.token = nil
-      @order.valid?
-      expect(@order.errors.full_messages).to include("Token can't be blank")
-    end
+  context '購入できない場合' do
+        it "tokenが空では登録できない" do
+          @order_address.token = nil
+          @order_address.valid?
+          expect(@order_address.errors.full_messages).to include("Token can't be blank")
+        end 
+        it 'postal_codeが空だと保存できない' do
+          @order_address.postal_code = nil
+          @order_address.valid?
+          expect(@order_address.errors.full_messages).to include("Postal code can't be blank")
+        end
+        it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できない' do
+          @order_address.postal_code = '1234567'
+          @order_address.valid?
+          expect(@order_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+        end
+        it 'prefecture{---}（１）では登録できない' do
+          @order_address.prefecture_id = "1"
+          @order_address.valid?
+          expect(@order_address.errors.full_messages).to include("Prefecture can't be blank")    
+        end
+        it 'city_townが空だと保存できない' do
+          @order_address.city_town = nil
+          @order_address.valid?
+          expect(@order_address.errors.full_messages).to include("City town can't be blank")
+       end
+        it 'address_numberが空だと保存できない' do
+          @order_address.address_number = nil
+          @order_address.valid?
+          expect(@order_address.errors.full_messages).to include("Address number can't be blank")
+        end
+        it 'phone_numberが空だと保存できない' do
+          @order_address.phone_number = nil
+          @order_address.valid?
+          expect(@order_address.errors.full_messages).to include("Phone number can't be blank") 
+        end
+    end 
   end
 end
