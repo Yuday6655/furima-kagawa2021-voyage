@@ -5,6 +5,9 @@ before_action :set_item, :move_to_root_path, :authenticate_user!
 def index
   if current_user.id == @item.user_id
     redirect_to root_path
+  elsif 
+    @item.order.present?
+    redirect_to root_path
   else
     @order_address = OrderAddress.new
   end
