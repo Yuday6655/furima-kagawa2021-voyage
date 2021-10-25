@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_item, :move_to_root_path, :authenticate_user!
+  before_action :set_item, :authenticate_user!
 
   def index
     if current_user.id == @item.user_id
@@ -43,9 +43,6 @@ class OrdersController < ApplicationController
     )
   end
 
-  def move_to_root_path
-    redirect_to root_path unless user_signed_in?
-  end
 
   def address_params
     params.require(:order_address).permit(:postal_code, :prefecture_id, :city_town, :address_number, :building,
