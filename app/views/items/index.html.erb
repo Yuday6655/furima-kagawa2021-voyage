@@ -18,7 +18,6 @@
     </div>
   </div>
   <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>
-
   <%# FURIMAが選ばれる3つの理由部分 %>
   <div class='select-reason-contents'>
     <h2 class='title'>
@@ -61,7 +60,6 @@
     </ul>
   </div>
   <%# /FURIMAが選ばれる3つの理由部分 %>
-
   <%# 画面中央の「会員数日本一位」帯部分 %>
   <div class='ad-contents'>
     <h2 class='ad-title'>
@@ -82,7 +80,6 @@
     </div>
   </div>
   <%# /画面中央の「会員数日本一位」帯部分 %>
-
   <%# FURIMAの特徴 %>
   <div class='feature-contents'>
     <h2 class='title'>
@@ -133,13 +130,10 @@
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" if item.image.attached?  %>
           
-          <%# if item.order %>
-          <!--
-          <div class='sold-out'>
-            <span>Sold Out!!</span>
-          </div>
-          -->
-          <%# end %>
+         <% if item.order.present? %>
+      <div class="sold-out">
+        <span>Sold Out!!</span>
+      <% end %>
           
         </div>
         <div class='item-info'>
@@ -157,7 +151,6 @@
         <% end %>
       </li>
       <% end %>
-
       <% else %>
       <li class='list'>
         <%= link_to '#' do %>
@@ -185,5 +178,8 @@
       <span class='purchase-btn-text'>出品する</span>
       <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
     <% end %>
-
 <%= render "shared/footer" %>
+© 2021 GitHub, Inc.
+Terms
+Privacy
+Security
