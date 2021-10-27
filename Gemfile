@@ -68,3 +68,4 @@ gem 'pry-rails'
 gem 'devise'
 gem 'rspec-rails', '~> 4.0.0'
 gem 'payjp'
+gem "aws-sdk-s3", require: false
