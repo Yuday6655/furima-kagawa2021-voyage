@@ -52,3 +52,6 @@ production:
   database: furima_kagawa2021_voyage_production
   username: furima_kagawa2021_voyage
   password: <%= ENV['FURIMA_KAGAWA2021_VOYAGE_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
